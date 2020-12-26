@@ -8,7 +8,7 @@ const userSchema = new Schema({
     cpf: { type: String, required: true, unique: true },
     password: { type: String, required: true, minlength: 6 },
     role: { type: String, required: true, enum: ['user', 'admin'], default: 'user' },
-    processes: [{ type: Schema.Types.ObjectId, ref: 'Process', required: true }],
+    processes: [{ type: Schema.Types.ObjectId, ref: 'process', required: true }],
     },
     {
         timestamps: true,

@@ -16,7 +16,7 @@
                 <img class="arrow-menu" src="/images/down-arrow.svg" alt="down-arrow-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{>navBarMenuDropDown}}
             </div>
-        <span>Grazielli</span>
+        <span>Grazielli Pozzi</span>
         </div>
     </div>
 </nav>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="modal-field">
                         <label for="complainer">Reclamante</label>
-                        <input class="modal-input" type="text" name="complainer" id="procecomplainerssNumber" placeholder="Insira o nome do reclamante" required>
+                        <input class="modal-input" type="text" name="complainer" id="processcomplainerNumber" placeholder="Insira o nome do reclamante" required>
                     </div>
                     <div class="modal-field">
                         <label for="claimed">Reclamado</label>
@@ -56,7 +56,7 @@
                     <div class="modal-field"></div>
                         <label for="status">Status</label>
                         <select class="modal-input" name="status" id="status" placeholder="Status" required>
-                            <option value="pendenteManifestação">Pendente manifestação</option>
+                            <option value="PendenteManifestação">Pendente manifestação</option>
                             <option value="prazo">Prazo</option>
                             <option value="aguardandoAudiência">Aguardando audiência</option>
                             <option value="concluso">Concluso</option>
@@ -82,6 +82,23 @@
     {{#if data}}
     <div class="info-dash-container">
         <h2>Lista de Processos</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Número do processo</th>
+                    <th>Reclamante</th>
+                    <th>Reclamado</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-body">
+                {{#each data}}
+                    {{>processTableRows this}}
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 
     {{else}}

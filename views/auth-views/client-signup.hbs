@@ -1,0 +1,38 @@
+<form action="/client/signup" method="post">
+<div>
+    <label for="fullName">Nome completo</label>
+    <input type="text" name="fullName" id="fullName" placeholder="Digite o seu nome completo.">
+</div>
+
+<div>
+    <label for="email"></label>
+    <input type="text" name="email" id="email" placeholder="Digite o seu email.">
+</div>
+
+<div>
+    <label for="cpf"></label>
+    <input type="text" name="cpf" id="cpf" placeholder="Digite o seu CPF.">
+</div>
+
+<div>
+    <label for="password"></label>
+    <input type="password" name="password" id="password" placeholder="Digite a sua senha.">
+</div>
+
+<div>
+    <label for="confirmationPassword"></label>
+    <input type="password" name="confirmationPassword" id="confirmationPassword" placeholder="Confirme a sua senha.">
+</div>
+
+{{#if errorMessage}}
+    <div>
+        <span>{{errorMessage}}</span>
+    </div>
+{{/if}}
+
+<button type="submit">Cadastrar</button>
+
+<a href="/login">
+    <button type="button">Entrar com a minha conta</button>
+</a>
+</form>

@@ -7,6 +7,8 @@ const processSchema = new Schema({
     claimed: { type: String, required: true },
     description: { type: String, required: true },
     status: { type: String, required: true },
+    client: { type: Schema.Types.ObjectId, ref: 'user', required: false },
+    lawyer: { type: Schema.Types.ObjectId, ref: 'user', required: false },
 },
 {
     timestamps: true,
