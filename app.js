@@ -21,7 +21,7 @@ app.set('views', __dirname + '/views');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', appRoutes);
-app.use('/', authRoutes);
+app.use('/adv', appRoutes);
+app.use('/adv', authRoutes);
 
 app.listen(3000, () => console.log('App running on PORT 3000'));
