@@ -1,31 +1,25 @@
-<form action="/client-login" method="post">
-<div>
-    <label for="fullName">Nome completo</label>
-    <input type="text" name="fullName" id="fullName" placeholder="Digite o seu nome completo.">
-
-</div>
-
-<div>
-    <label for="email"></label>
-    <input type="text" name="email" id="email" placeholder="Digite o seu email.">
-
-</div>
+<form action="/adv/client-login" method="post">
 
 <div>
     <label for="cpf"></label>
     <input type="text" name="cpf" id="cpf" placeholder="Digite o seu CPF.">
+
+    {{#if cpfError}}
+        <div>
+            <span>{{cpfError}}</span>
+        </div>
+    {{/if}}
 
 </div>
 
 <div>
     <label for="password"></label>
     <input type="password" name="password" id="password" placeholder="Digite a sua senha.">
-
-</div>
-
-<div>
-    <label for="confirmationPassword"></label>
-    <input type="password" name="confirmationPassword" id="confirmationPassword" placeholder="Confirme a sua senha.">
+    {{#if passwordError}}
+        <div>
+            <span>{{passwordError}}</span>
+        </div>
+    {{/if}}
 
 </div>
 

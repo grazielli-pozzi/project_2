@@ -5,7 +5,7 @@
     
     <div class="navigation-profile">
         <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewProcess">
-            {{>createNewProcess}}
+            {{>createNewProject}}
         </button>
         <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewUser">
             {{>createNewUser}}
@@ -21,12 +21,12 @@
     </div>
 </nav>
 
-<div class="modal fade" id="createNewProcess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createNewUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="needs-validation" action="/process/create" method="post">
-                    <h2>Criar novo processo</h2>
+                <form class="needs-validation" action="/users/create" method="post">
+                    <h2>Criar novo usuário</h2>
                     <div class="modal-field">
                     {{!-- Trazer os cpfs dos clientes cadastrados no banco
                     <label for="protocol">Protocolo</label>
@@ -36,31 +36,23 @@
                     </select> --}}
                     </div>
                     <div class="modal-field">
-                        <label for="processNumber">Número do processo</label>
-                        <input class="modal-input" type="text" name="processNumber" id="processNumber" placeholder="Insira o número do processo" required>
+                        <label for="fullName">Nome completo</label>
+                        <input class="modal-input" type="text" name="fullName" id="fullName" placeholder="Insira o nome completo do usuário" required>
                     </div>
                     <div class="modal-field">
-                        <label for="complainer">Reclamante</label>
-                        <input class="modal-input" type="text" name="complainer" id="processcomplainerNumber" placeholder="Insira o nome do reclamante" required>
+                        <label for="email">Email</label>
+                        <input class="modal-input" type="text" name="email" id="email" placeholder="Insira o email do usuário" required>
                     </div>
                     <div class="modal-field">
-                        <label for="claimed">Reclamado</label>
-                        <input class="modal-input" type="text" name="claimed" id="claimed" placeholder="Insira o nome do reclamado" required>
+                        <label for="cpf">CPF</label>
+                        <input class="modal-input" type="text" name="cpf" id="cpf" placeholder="Insira o CPF do usuário" required>
                     </div>
 
                     <div class="modal-field">
-                        <label for="description">Descrição</label>
-                        <input class="modal-input" type="text" name="description" id="description" placeholder="Insira a descrição do processo" required>
+                        <label for="password">Senha</label>
+                        <input class="modal-input" type="text" name="password" id="password" placeholder="Insira a senha do usuário" required>
                     </div>
 
-                    <div class="modal-field"></div>
-                        <label for="status">Status</label>
-                        <select class="modal-input" name="status" id="status" placeholder="Status" required>
-                            <option value="PendenteManifestação">Pendente manifestação</option>
-                            <option value="prazo">Prazo</option>
-                            <option value="aguardandoAudiência">Aguardando audiência</option>
-                            <option value="concluso">Concluso</option>
-                        </select>
                     </div>
 
                     <div class="modal-action-buttons">
@@ -68,7 +60,7 @@
                             Cancelar
                         </button>
                         <button type="submit" class="btn-main">
-                            Criar novo processo
+                            Criar novo usuário
                         </button>
                     </div>
                 </form>
@@ -79,23 +71,22 @@
 </div>
 
 <main>
-    {{#if dataProcess}}
+    {{#if dataUser}}
     <div class="info-dash-container">
-        <h2>Lista de Processos</h2>
+        <h2>Lista de usuários</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Número do processo</th>
-                    <th>Reclamante</th>
-                    <th>Reclamado</th>
-                    <th>Descrição</th>
-                    <th>Status</th>
+                    <th>Nome completo</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Senha</th>
                 </tr>
             </thead>
 
             <tbody id="table-body">
-                {{#each dataProcess}}
-                    {{>processTableRows this}}
+                {{#each dataUser}}
+                    {{>userTableRows this}}
                 {{/each}}
             </tbody>
         </table>
@@ -103,10 +94,10 @@
 
     {{else}}
     <div class="empty-dash-container">
-        <h2>Ainda não existem processos criados</h2>
-        <p>Para criar um novo processo, clique no botão abaixo</p>
-        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewProcess">
-            {{>createNewProcess}}
+        <h2>Ainda não existem usuários criados</h2>
+        <p>Para criar um novo usuário, clique no botão abaixo</p>
+        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewUser">
+            {{>createNewUser}}
         </button>
     </div>
     {{/if}}

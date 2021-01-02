@@ -8,6 +8,13 @@ const generateEncryptedPassword = async (password) => {
     const encryptedPassword = bcrypt.hashSync(password, salt);
 
     return encryptedPassword;
-}
+};
 
-module.exports = generateEncryptedPassword;
+const verifyPassword = (password, encryptedPassword) => {
+    return bcrypt.compareSync(password, encryptedPassword);
+};
+
+module.exports = {
+    generateEncryptedPassword,
+    verifyPassword,
+}

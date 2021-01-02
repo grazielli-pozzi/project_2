@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const generateEncryptedPassword = require('../utils/passwordManager');
+const passwordManager = require('../utils/passwordManager');
 
 router.get('/client-signup', (req, res) => {
     try {
@@ -81,13 +81,13 @@ router.post('/client-signup', async (req, res) => {
             fullName,
             email,
             cpf,
-            password: await generateEncryptedPassword(password),
+            password: await passwordManager.generateEncryptedPassword(password),
         });
 
         console.log(newClient);
 
         await newClient.save();
-        res.redirect('/client-login');
+        res.redirect('/adv/dashboard-adv');
 
     } catch (error) {
       console.log(error);
@@ -95,7 +95,40 @@ router.post('/client-signup', async (req, res) => {
 });
 
 router.get('/client-login', async (req, res) => {
-    res.render('auth-views/client-login')
+    res.render('auth-views/client-login');
+});
+
+router.post('/client-login', async (req, res, next) => {
+    try {
+        const { cpf, password } = req.body;
+
+        const userCpfExists = await User.findOne({ cpf });
+
+        if(!userCpfExists) {
+            const errors = {
+                cpfError: 'CPF não cadastrado',
+            }
+    
+            res.render('auth-views/client-login', errors);
+    
+            return;
+        }
+        
+        if(userCpfExists) {
+            if(!(passwordManager.verifyPassword(password, userCpfExists.password))) {
+                const errors = {
+                    passwordError: 'Senha incorreta',
+                }
+                res.render('auth-views/client-login', errors);
+            }
+        }
+
+        res.redirect('/adv/dashboard-adv');
+        //a rota deve ser /client/dashboard/client
+
+    } catch (error) {
+      console.log(error);
+    }
 });
 
 module.exports = router;
