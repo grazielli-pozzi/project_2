@@ -87,7 +87,7 @@ router.post('/client-signup', async (req, res) => {
         console.log(newClient);
 
         await newClient.save();
-        res.redirect('/adv/dashboard-adv');
+        res.redirect('/adv/dashboard');
 
     } catch (error) {
       console.log(error);
@@ -123,7 +123,7 @@ router.post('/client-login', async (req, res, next) => {
             }
         }
 
-        res.redirect('/adv/dashboard-adv');
+        res.redirect('/adv/dashboard');
         //a rota deve ser /client/dashboard/client
 
     } catch (error) {

@@ -4,11 +4,11 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-router.get('/dashboard-adv', async (request, response) => {
+router.get('/dashboard', async (request, response) => {
     try {
         const dataProcess = await Process.find({ lawyer: '5fe766e5ad692520c4d88b68' }).populate('processes');
 
-        response.render('dashboard-adv', { dataProcess, lawyer: dataProcess[0].lawyer });
+        response.render('dashboard', { dataProcess, lawyer: dataProcess[0].lawyer });
         console.log(dataProcess);
     } catch (error) {
         console.log(error);
@@ -29,7 +29,7 @@ router.post('/process/create', async (request, response) => {
 
     await newProcess.save();
 
-    response.redirect('/adv/dashboard-adv');
+    response.redirect('/adv/dashboard');
 
 });
 

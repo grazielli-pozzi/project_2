@@ -25,7 +25,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="needs-validation" action="/process/create" method="post">
+                <form class="needs-validation" action="/adv/process/create" method="post">
                     <h2>Criar novo processo</h2>
                     <div class="modal-field">
                     {{!-- Trazer os cpfs dos clientes cadastrados no banco
@@ -56,9 +56,9 @@
                     <div class="modal-field"></div>
                         <label for="status">Status</label>
                         <select class="modal-input" name="status" id="status" placeholder="Status" required>
-                            <option value="PendenteManifestação">Pendente manifestação</option>
+                            <option value="Pendente de Manifestação">Pendente manifestação</option>
                             <option value="prazo">Prazo</option>
-                            <option value="aguardandoAudiência">Aguardando audiência</option>
+                            <option value="Aguardando Audiência">Aguardando audiência</option>
                             <option value="concluso">Concluso</option>
                         </select>
                     </div>
