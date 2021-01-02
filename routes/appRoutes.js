@@ -35,11 +35,17 @@ router.post('/process/create', async (request, response) => {
 
 router.get('/users', async (request, response) => {
     try {
-        const dataUser = await User.find({ lawyer: '5fedfefe4aa50a23a492fed4' }).populate('users');
+        const dataUser = await User.find({ lawyer: '5fe766e5ad692520c4d88b68' }).populate('users');
         console.log(dataUser);
-        response.render('users', { dataUser, lawyer: dataUser[0].lawyer });
+        if(dataUser) {
+            response.render('users', { dataUser, lawyer: dataUser[0].lawyer });
+        } else {
+            response.render('users');
+        }
+
     } catch (error) {
         console.log(error);
+        response.render('users');
     }
 });
 

@@ -5,18 +5,17 @@
     
     <div class="navigation-profile">
         <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewProcess">
-            {{>createNewProject}}
+            {{>createNewProcess}}
         </button>
         <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewUser">
             {{>createNewUser}}
         </button>
         <div>
-            <img class="avatar-image" src="/images/default-avatar.png" alt="user-profile-avatar">
             <div class="dropdown">
                 <img class="arrow-menu" src="/images/down-arrow.svg" alt="down-arrow-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{>navBarMenuDropDown}}
             </div>
-        <span>Grazielli Pozzi</span>
+        <span>Área do advogado</span>
         </div>
     </div>
 </nav>
@@ -25,7 +24,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="needs-validation" action="/users/create" method="post">
+                <form class="needs-validation" action="/adv/users/create" method="post">
                     <h2>Criar novo usuário</h2>
                     <div class="modal-field">
                     {{!-- Trazer os cpfs dos clientes cadastrados no banco
