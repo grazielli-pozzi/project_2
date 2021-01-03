@@ -6,16 +6,24 @@ const router = express.Router();
 
 router.get('/dashboard', async (request, response) => {
     try {
+        response.render('dashboard');
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.get('/processes', async (request, response) => {
+    try {
         const dataProcess = await Process.find({ lawyer: '5fe766e5ad692520c4d88b68' }).populate('processes');
 
-        response.render('dashboard', { dataProcess, lawyer: dataProcess[0].lawyer });
+        response.render('processes', { dataProcess, lawyer: dataProcess[0].lawyer });
         console.log(dataProcess);
     } catch (error) {
         console.log(error);
     }
 });
 
-router.post('/process/create', async (request, response) => {
+router.post('/processes/create', async (request, response) => {
     const { processNumber, complainer, claimed, description, status } = request.body;
     
     const newProcess = new Process({
@@ -29,7 +37,7 @@ router.post('/process/create', async (request, response) => {
 
     await newProcess.save();
 
-    response.redirect('/adv/dashboard');
+    response.redirect('/adv/processes');
 
 });
 

@@ -4,109 +4,24 @@
     </div>
     
     <div class="navigation-profile">
-        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewProcess">
-            {{>createNewProcess}}
-        </button>
-        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewUser">
-            {{>createNewUser}}
-        </button>
-        <div>
-            <div class="dropdown">
-                <img class="arrow-menu" src="/images/down-arrow.svg" alt="down-arrow-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{>navBarMenuDropDown}}
-            </div>
-            <span>Área do advogado</span>
-        </div>
+    <div>
+        <button class="btn-main" type="button"><a href="/adv/processes">Listar processos</a></button>
+    </div>
+
+    <div>
+        <button class="btn-main" type="button"><a href="/adv/users">Listar usuários</a></button>
+    </div>
     </div>
 </nav>
 
-<div class="modal fade" id="createNewProcess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form class="needs-validation" action="/adv/process/create" method="post">
-                    <h2>Criar novo processo</h2>
-                    <div class="modal-field">
-                    {{!-- Trazer os cpfs dos clientes cadastrados no banco
-                    <label for="protocol">Protocolo</label>
-                    <select class="modal-input" name="protocol" id="protocol" placeholder="Procolo" required>
-                        <option value="http://">HTTP</option>
-                        <option value="https://">HTTPS</option>
-                    </select> --}}
-                    </div>
-                    <div class="modal-field">
-                        <label for="processNumber">Número do processo</label>
-                        <input class="modal-input" type="text" name="processNumber" id="processNumber" placeholder="Insira o número do processo" required>
-                    </div>
-                    <div class="modal-field">
-                        <label for="complainer">Reclamante</label>
-                        <input class="modal-input" type="text" name="complainer" id="processcomplainerNumber" placeholder="Insira o nome do reclamante" required>
-                    </div>
-                    <div class="modal-field">
-                        <label for="claimed">Reclamado</label>
-                        <input class="modal-input" type="text" name="claimed" id="claimed" placeholder="Insira o nome do reclamado" required>
-                    </div>
-
-                    <div class="modal-field">
-                        <label for="description">Descrição</label>
-                        <input class="modal-input" type="text" name="description" id="description" placeholder="Insira a descrição do processo" required>
-                    </div>
-
-                    <div class="modal-field"></div>
-                        <label for="status">Status</label>
-                        <select class="modal-input" name="status" id="status" placeholder="Status" required>
-                            <option value="Pendente de Manifestação">Pendente manifestação</option>
-                            <option value="prazo">Prazo</option>
-                            <option value="Aguardando Audiência">Aguardando audiência</option>
-                            <option value="concluso">Concluso</option>
-                        </select>
-                    </div>
-
-                    <div class="modal-action-buttons">
-                        <button type="button" class="btn-outline" data-dismiss="modal">
-                            Cancelar
-                        </button>
-                        <button type="submit" class="btn-main">
-                            Criar novo processo
-                        </button>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>    
-</div>
-
-<main>
-    {{#if dataProcess}}
-    <div class="info-dash-container">
-        <h2>Lista de Processos</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Número do processo</th>
-                    <th>Reclamante</th>
-                    <th>Reclamado</th>
-                    <th>Descrição</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody id="table-body">
-                {{#each dataProcess}}
-                    {{>processTableRows this}}
-                {{/each}}
-            </tbody>
-        </table>
+<section>
+        <div>
+    <div>
+        <button class="btn-main" type="button"><a href="/adv/processes/create">Criar novo processo</a></button>
     </div>
 
-    {{else}}
-    <div class="empty-dash-container">
-        <h2>Ainda não existem processos criados</h2>
-        <p>Para criar um novo processo, clique no botão abaixo</p>
-        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewProcess">
-            {{>createNewProcess}}
-        </button>
+    <div>
+        <button class="btn-main" type="button"><a href="/adv/users/create">Criar novo usuário</a></button>
     </div>
-    {{/if}}
-</main>
+    </div>
+</section>
