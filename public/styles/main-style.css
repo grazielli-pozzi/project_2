@@ -164,3 +164,7 @@
         flex: 1
     }
 
+    .section-dashboard {
+        height: 88vh;
+    }
+

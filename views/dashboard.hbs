@@ -1,27 +1,133 @@
-<nav>
-    <div>
-        <img src="/images/shorty-logo.svg" alt="shorty-app-main-logo">
-    </div>
-    
+<nav>  
+    <div >
     <div class="navigation-profile">
-    <div>
-        <button class="btn-main" type="button"><a href="/adv/processes">Listar processos</a></button>
+        <button class="btn-main" type="button"><a class="btn-main" href="/adv/processes">Listar processos</a></button>
     </div>
 
-    <div>
-        <button class="btn-main" type="button"><a href="/adv/users">Listar usuários</a></button>
+    <div class="navigation-profile">
+        <button class="btn-main" type="button"><a class="btn-main" href="/adv/users">Listar usuários</a></button>
     </div>
     </div>
 </nav>
 
-<section>
+<section class="section-dashboard">
+<div>
+    <div class="navigation-profile">
+        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewProcess">
+            {{>createNewProcess}}
+        </button>
         <div>
-    <div>
-        <button class="btn-main" type="button"><a href="/adv/processes/create">Criar novo processo</a></button>
+            <div class="dropdown">
+                {{>navBarMenuDropDown}}
+            </div>
+        </div>
     </div>
 
-    <div>
-        <button class="btn-main" type="button"><a href="/adv/users/create">Criar novo usuário</a></button>
+    <div class="navigation-profile">
+        <button class="btn-main" type="button" data-toggle="modal" data-target="#createNewUser">
+            {{>createNewUser}}
+        </button>
+        <div>
+            <div class="dropdown">
+            <img class="arrow-menu" src="/images/down-arrow.svg" alt="down-arrow-icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{>navBarMenuDropDown}}
+            </div>
+        </div>
     </div>
-    </div>
+</div>
+
+<div class="modal fade" id="createNewProcess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" action="/adv/processes/create" method="post">
+                    <h2>Criar novo processo</h2>
+                    <div class="modal-field">
+                    </div>
+                    <div class="modal-field">
+                        <label for="processNumber">Número do processo</label>
+                        <input class="modal-input" type="text" name="processNumber" id="processNumber" placeholder="Insira o número do processo" required>
+                    </div>
+                    <div class="modal-field">
+                        <label for="complainer">Reclamante</label>
+                        <input class="modal-input" type="text" name="complainer" id="processcomplainerNumber" placeholder="Insira o nome do reclamante" required>
+                    </div>
+                    <div class="modal-field">
+                        <label for="claimed">Reclamado</label>
+                        <input class="modal-input" type="text" name="claimed" id="claimed" placeholder="Insira o nome do reclamado" required>
+                    </div>
+
+                    <div class="modal-field">
+                        <label for="description">Descrição</label>
+                        <input class="modal-input" type="text" name="description" id="description" placeholder="Insira a descrição do processo" required>
+                    </div>
+
+                    <div class="modal-field"></div>
+                        <label for="status">Status</label>
+                        <select class="modal-input" name="status" id="status" placeholder="Status" required>
+                            <option value="Pendente de Manifestação">Pendente manifestação</option>
+                            <option value="prazo">Prazo</option>
+                            <option value="Aguardando Audiência">Aguardando audiência</option>
+                            <option value="concluso">Concluso</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-action-buttons">
+                        <button type="button" class="btn-outline" data-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-main">
+                            Criar novo processo
+                        </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="modal fade" id="createNewUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" action="/adv/users/create" method="post">
+                    <h2>Criar novo usuário</h2>
+                    <div class="modal-field">
+                    </div>
+                    <div class="modal-field">
+                        <label for="fullName">Nome completo</label>
+                        <input class="modal-input" type="text" name="fullName" id="fullName" placeholder="Insira o nome completo do usuário" required>
+                    </div>
+                    <div class="modal-field">
+                        <label for="email">Email</label>
+                        <input class="modal-input" type="text" name="email" id="email" placeholder="Insira o email do usuário" required>
+                    </div>
+                    <div class="modal-field">
+                        <label for="cpf">CPF</label>
+                        <input class="modal-input" type="text" name="cpf" id="cpf" placeholder="Insira o CPF do usuário" required>
+                    </div>
+
+                    <div class="modal-field">
+                        <label for="password">Senha</label>
+                        <input class="modal-input" type="text" name="password" id="password" placeholder="Insira a senha do usuário" required>
+                    </div>
+
+                    </div>
+
+                    <div class="modal-action-buttons">
+                        <button type="button" class="btn-outline" data-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-main">
+                            Criar novo usuário
+                        </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
 </section>
+
