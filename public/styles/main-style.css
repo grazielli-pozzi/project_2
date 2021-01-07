@@ -168,3 +168,12 @@
         height: 88vh;
     }
 
+    .buttons {
+        display: flex;
+        height: 100%;
+        padding: 200px !important;
+    }
+
+    .btn-main > a {
+        text-decoration: none;
+    }
